@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+  <% @user.proyects.each do |pr| %>
+  	 <%= pr.name %>
+  	
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+
+<h1>Proyects</h1>
+
+<table>
+
+  <tbody>
+    <% @proyects.each do |proyect| %>
+      <tr>
+        <td><%= proyect.name %></td>
+        <td><%= link_to 'Asignar proyecto', allocations_path(proyect_id: proyect.id, user_id: @user.id), method: :post %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
